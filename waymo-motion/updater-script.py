@@ -1,6 +1,9 @@
 import os
 import json
 import logging
+import argparse
+import random
+import time
 from pathlib import Path
 import shutil
 from tqdm import tqdm
@@ -46,7 +49,7 @@ def write_status_dict(status_dict):
     with open(get_status_filepath(), 'w') as outfile:
         outfile.write(json.dumps(status_dict, indent=4))
 
-def get_relevant_gcloud_blobs():
+def get_relevant_gcloud_blobs(gcloud_proj_name='Test1'):
     logging.info(">> Reading gcloud blobs")
     client = storage.Client('Test1') # You need to have at least some google cloud project, related to your signed-in gcloud user
     file_blobs = []
@@ -190,13 +193,23 @@ def process_blob(blob, status_dict):
 def run_main():
     logging.basicConfig(level=logging.INFO, format='%(message)s')
     
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-r', '--random', action='store_true', help="Randomly select new scenarios to process (as opposed to sequentially)")
+    parser.add_argument('-p', '--project', help="A valid gcloud project name associated with the gcloud-cli default user", default='Test1')
+
+    args = parser.parse_args()
+
     status_dict = read_status_dict()
-    relevant_blobs = get_relevant_gcloud_blobs()
+    relevant_blobs = get_relevant_gcloud_blobs(gcloud_proj_name=args.project)
     blobs_to_process = []
     for blob in relevant_blobs:
         if blob.name not in status_dict:
             blobs_to_process.append(blob)
     
+    if args.random:
+        random.seed(time.time())
+        random.shuffle(blobs_to_process)
+
     for blob in blobs_to_process:
         process_blob(blob, status_dict)
         write_status_dict(status_dict)
