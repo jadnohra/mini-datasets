@@ -1,4 +1,4 @@
 # simplified-datasets
 
-![](github.gif)
+![](fig-anim.gif)
 
