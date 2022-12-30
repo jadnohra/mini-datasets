@@ -7,5 +7,5 @@ A single tensorflow protobuf record from the [Waymo Open Dataset](https://github
 As we do that, we also provide visual animations from the dataset [here](./waymo-motion/data), they are around 10 MB per scenario. 
 ![](./waymo-motion/data/uncompressed_scenario_training_training.tfrecord-00000-of-01000.gif)
 
-To add some more, run `bazel run waymo-motion:updater-script -- -r -p <project>` for a while and do a pull request.
+To contribute animations, run `bazel run waymo-motion:updater-script -- -r -p <project>` for a while (interrupt at will with ctrl-c), followed by a pull request.
 `<project>` must be a valid gcloud project under your gcloud username. It takes around a minute to download and process a record.
