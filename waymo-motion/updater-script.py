@@ -132,7 +132,9 @@ def process_blob(blob, status_dict):
 
             for centerline in map_centerlines:
                 plt.plot(*list(zip(*centerline)), '--', color='lightgray', zorder=0)
-            plt.scatter(*list(zip(*idle_states)), facecolors='none', edgecolors='lightgray', zorder=1)
+            
+            if len(idle_states) > 0:
+                plt.scatter(*list(zip(*idle_states)), facecolors='none', edgecolors='lightgray', zorder=1)
 
             curr_states = []
             for track_trajectory in track_trajectories:
@@ -141,7 +143,6 @@ def process_blob(blob, status_dict):
                 
             plt.scatter(*list(zip(*curr_states)), facecolors='none', edgecolors='r', zorder=3)
             
-
             if fig_square_size is None:
                 xlim = plt.gca().get_xlim() 
                 ylim = plt.gca().get_ylim() 
