@@ -1,4 +1,4 @@
 # simplified-datasets
 
-![](fig-anim.gif)
+Run `bazel run waymo-motion:updater-script`
 
