@@ -10,5 +10,6 @@ py_binary(
         pip_req("imageio"),
         pip_req("google-cloud-storage"),
         pip_req("tqdm"),
+        "//infra:infra_locals_lib",
     ],
 )
