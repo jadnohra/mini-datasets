@@ -43,7 +43,7 @@ def read_status_dict():
         return {}
 
 def write_status_dict(status_dict):
-    with open(get_status_filepath, 'w') as outfile:
+    with open(get_status_filepath(), 'w') as outfile:
         outfile.write(json.dumps(status_dict, indent=4))
 
 def get_relevant_gcloud_blobs():
@@ -171,9 +171,10 @@ def process_blob(blob, status_dict):
         return out_vid_fpath
 
     def finalize_blob(status_dict, blob, blob_local_name, vid_fpath):
-        result_fpath = os.path.join(get_data_dirpath(), blob_local_name + '.gif')
+        vid_final_fname = blob_local_name + '.gif'
+        result_fpath = os.path.join(get_data_dirpath(), vid_final_fname)
         shutil.move(vid_fpath, result_fpath)
-        status_dict[blob.name] = result_fpath
+        status_dict[blob.name] = vid_final_fname
 
     blob_local_name = blob.name.replace('/', '_')
     tmp_dirpath = get_clean_tmp_dirpath()
