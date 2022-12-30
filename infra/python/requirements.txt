@@ -1,0 +1,7 @@
+tensorflow==2.6.0
+google-cloud-storage==2.6.0
+waymo-open-dataset-tf-2-6-0
+matplotlib
+Pillow
+imageio
+tqdm
