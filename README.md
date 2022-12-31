@@ -1,4 +1,4 @@
-# simplified-datasets
+# mini-datasets
 
 ## Waymo Motion Data
 
