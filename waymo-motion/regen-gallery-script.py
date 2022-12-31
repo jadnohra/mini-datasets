@@ -13,6 +13,9 @@ def get_data_vid_dirpath():
 def get_data_thumb_dirpath():
     return os.path.join(get_data_dirpath(), "thumb")
 
+def get_data_gallery_dirpath():
+    return os.path.join(get_data_dirpath(), "gallery")
+
 def run_main():
     def make_page_name(i, gallery_groups):
         if i < 0 or i >= len(gallery_groups):
@@ -46,7 +49,8 @@ def run_main():
 | {make_thumb_code(group[8])}  | {make_thumb_code(group[9])}  | {make_thumb_code(group[10])}  | {make_thumb_code(group[11])}  |
 | {make_thumb_code(group[12])}  | {make_thumb_code(group[13])}  | {make_thumb_code(group[14])}  | {make_thumb_code(group[15])}  |
 '''
-        print(md_code)
+        with open(os.path.join(get_data_gallery_dirpath(), make_page_name(i, gallery_groups)), "w") as outfile:
+            outfile.write(md_code)
 
 if __name__ == "__main__":
     run_main()
