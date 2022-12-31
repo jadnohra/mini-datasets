@@ -1,0 +1,1 @@
+![](./uncompressed_scenario_training_training.tfrecord-00022-of-01000.gif)

@@ -13,3 +13,11 @@ py_binary(
         "//infra:infra_locals_lib",
     ],
 )
+
+py_binary(
+    name = "regen-gallery-script",
+    srcs = ["regen-gallery-script.py"],
+    deps = [
+        "//infra:infra_locals_lib",
+    ],
+)
