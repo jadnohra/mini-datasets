@@ -110,7 +110,7 @@ def process_blob(blob, status_dict):
             first_pos = track_trajectory[0]
             is_static = all([xy == first_pos for xy in track_trajectory])
             if is_static:
-                static_tracks.append(track_trajectory) 
+                static_tracks.append([first_pos]) 
             else:
                 track_trajectories.append(track_trajectory)
 
