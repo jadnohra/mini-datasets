@@ -165,7 +165,7 @@ def process_blob(blob, status_dict):
             plt.savefig(fig_filename, bbox_inches='tight', dpi=180)
             plt.close()
     
-        out_vid_fpath = os.path.join(tmp_dirpath, 'fig-anim.gif')
+        out_vid_fpath = os.path.join(os.path.join(tmp_dirpath, 'vid'), 'fig-anim.gif')
         images = []
         for filename in fig_filenames:
             progress = int(100 * frame_index / traj_len)
