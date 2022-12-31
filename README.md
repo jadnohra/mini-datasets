@@ -8,7 +8,7 @@ As we do that, we also provide visual animations from the dataset [here](./waymo
 ![](./waymo-motion/data/uncompressed_scenario_training_training.tfrecord-00000-of-01000.gif)
 
 To contribute with more animations:
-*  run `bazel run waymo-motion:updater-script -- -r -p <project>` for a while (interrupt at will with ctrl-c), followed by a pull request.
+*  Run `bazel run waymo-motion:updater-script -- -r -p <project>` for a while (interrupt at will with ctrl-c), followed by a pull request.
 * `<project>` must be a valid gcloud project under your gcloud username. It takes around a minute to download and process a record. 
 * To initialize the repo, you also need to run `python3 ./init_infra_locals.py` once.
 
