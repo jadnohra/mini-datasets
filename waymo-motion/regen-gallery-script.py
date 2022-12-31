@@ -19,7 +19,7 @@ def run_main():
     all_thumb_files = []
     for filename in glob.iglob(get_data_thumb_dirpath() + '/**/*', recursive=True):
         if filename.endswith('.gif'):
-            all_vid_files.append(os.path.abspath(filename)[len(get_data_thumb_dirpath())+1:])
+            all_thumb_files.append(os.path.abspath(filename)[len(get_data_thumb_dirpath())+1:])
     all_gallery_files = list(set(all_vid_files) & set(all_thumb_files))
 
     print(all_gallery_files)
