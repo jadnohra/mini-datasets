@@ -8,6 +8,7 @@ from pathlib import Path
 import shutil
 from tqdm import tqdm
 import imageio
+from PIL import Image
 import tensorflow.compat.v1 as tf
 import matplotlib.pyplot as plt
 from waymo_open_dataset.protos import scenario_pb2 
@@ -22,6 +23,9 @@ def get_data_dirpath():
 
 def get_data_vid_dirpath():
     return os.path.join(get_data_dirpath(), "vid")
+
+def get_data_thumb_dirpath():
+    return os.path.join(get_data_dirpath(), "thumb")
 
 def get_status_filename():
     return 'status.json'
@@ -169,13 +173,17 @@ def render_scenario_vid(simple_scenario_data, tmp_dirpath):
         plt.close()
 
     out_vid_fpath = os.path.join(tmp_dirpath, 'fig-anim.gif')
+    out_thumb_fpath = os.path.join(tmp_dirpath, 'fig-anim-thumb.gif')
     images = []
+    thumb_images = []
     for filename in fig_filenames:
         progress = int(100 * frame_index / traj_len)
         print('\rGenerating animation: [{0}] {1}%'.format('#'*int(progress/10), progress), end='', flush=True)
         images.append(imageio.imread(filename))
+        thumb_images.append(Image.fromarray(images[-1]).resize((256, 256),  Image.ANTIALIAS))
     imageio.mimsave(out_vid_fpath, images)
-    return out_vid_fpath
+    imageio.mimsave(out_thumb_fpath, thumb_images)
+    return out_vid_fpath, out_thumb_fpath
 
 
 class BlobCache:
@@ -230,13 +238,17 @@ class BlobProcessorVid:
         return blob.name not in self._status
 
     def process(self, blob_cache):
-        vid_fpath = render_scenario_vid(blob_cache.get_simple_scenario_data(), self._tmp_dirpath)
+        vid_fpath, thumb_fpath = render_scenario_vid(blob_cache.get_simple_scenario_data(), self._tmp_dirpath)
+        
         vid_final_fname = blob_cache.get_blob_local_name() + '.gif'
-        result_fpath = os.path.join(get_data_vid_dirpath(), vid_final_fname)
-        shutil.move(vid_fpath, result_fpath)
+        vid_result_fpath = os.path.join(get_data_vid_dirpath(), vid_final_fname)
+        shutil.move(vid_fpath, vid_result_fpath)
+        thumb_result_fpath = os.path.join(get_data_thumb_dirpath(), vid_final_fname)
+        shutil.move(thumb_fpath, thumb_result_fpath)
         
         self._status.append(blob_cache.get_blob().name)
         write_status_file(self._status, os.path.join(get_data_vid_dirpath(), get_status_filename()))
+        write_status_file(self._status, os.path.join(get_data_thumb_dirpath(), get_status_filename()))
 
 def process_blob(blob, processors):
     blob_local_name = blob.name.replace('/', '_')
