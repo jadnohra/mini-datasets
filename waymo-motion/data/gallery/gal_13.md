@@ -1,0 +1,7 @@
+
+[prev](gal_12.md) - [next](#blank)
+| [![](../thumb/uncompressed_scenario_training_training.tfrecord-00156-of-01000.gif)](../vid/uncompressed_scenario_training_training.tfrecord-00156-of-01000.gif)  | [![](../thumb/uncompressed_scenario_training_training.tfrecord-00151-of-01000.gif)](../vid/uncompressed_scenario_training_training.tfrecord-00151-of-01000.gif)  | [![](../thumb/uncompressed_scenario_training_training.tfrecord-00170-of-01000.gif)](../vid/uncompressed_scenario_training_training.tfrecord-00170-of-01000.gif)  | [![](../thumb/uncompressed_scenario_training_training.tfrecord-00045-of-01000.gif)](../vid/uncompressed_scenario_training_training.tfrecord-00045-of-01000.gif)  |
+|---|---|---|---|
+| [![](../thumb/uncompressed_scenario_training_training.tfrecord-00208-of-01000.gif)](../vid/uncompressed_scenario_training_training.tfrecord-00208-of-01000.gif)  | [![](../thumb/uncompressed_scenario_training_training.tfrecord-00032-of-01000.gif)](../vid/uncompressed_scenario_training_training.tfrecord-00032-of-01000.gif)  | [![](../thumb/uncompressed_scenario_training_training.tfrecord-00173-of-01000.gif)](../vid/uncompressed_scenario_training_training.tfrecord-00173-of-01000.gif)  | [![](../thumb/uncompressed_scenario_training_training.tfrecord-00080-of-01000.gif)](../vid/uncompressed_scenario_training_training.tfrecord-00080-of-01000.gif)  |
+| [![](../thumb/uncompressed_scenario_training_training.tfrecord-00008-of-01000.gif)](../vid/uncompressed_scenario_training_training.tfrecord-00008-of-01000.gif)  |   |   |   |
+|   |   |   |   |
