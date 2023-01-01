@@ -52,5 +52,7 @@ def run_main():
         with open(os.path.join(get_data_gallery_dirpath(), make_page_name(i, gallery_groups)), "w") as outfile:
             outfile.write(md_code)
 
+    print(f'>> Regenerated {len(gallery_groups)} pages for {len(all_gallery_files)} videos')
+
 if __name__ == "__main__":
     run_main()
