@@ -1,6 +1,6 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-rules_python_version = "0.13.0" 
+rules_python_version = "0.13.0"
 
 http_archive(
     name = "rules_python",
@@ -17,12 +17,14 @@ python_register_toolchains(
 )
 
 load("@python3_8//:defs.bzl", "interpreter")
-
 load("@rules_python//python:pip.bzl", "pip_parse")
 
 pip_parse(
-   name = "py_deps",
-   requirements_lock = "//infra/python:requirements_lock.txt",
+    name = "py_deps",
+    python_interpreter_target = interpreter,
+    requirements_lock = "//infra/python:requirements_lock.txt",
 )
+
 load("@py_deps//:requirements.bzl", "install_deps")
+
 install_deps()
