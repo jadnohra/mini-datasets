@@ -11,5 +11,4 @@ For motion data analysis, we need a tiny fraction of that: map centerlines, bord
 To contribute with more animations:
 *  Run `bazel run waymo-motion:updater-script -- -r -p <project>` for a while (interrupt at will with ctrl-c), followed by a pull request.
 * `<project>` must be a valid gcloud project under your gcloud username. It takes around a minute to download and process a record on a powerful machine with good internet connection. 
-* To initialize the repo, you also need to run `python3 ./init_infra_locals.py` once.
 
