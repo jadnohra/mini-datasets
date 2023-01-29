@@ -6,3 +6,10 @@ compile_pip_requirements(
     requirements_in = "requirements.txt",
     requirements_txt = "requirements_lock.txt",
 )
+
+compile_pip_requirements(
+    name = "compile_pip_requirements2",
+    extra_args = ["--allow-unsafe"],
+    requirements_in = "requirements2.txt",
+    requirements_txt = "requirements2_lock.txt",
+)

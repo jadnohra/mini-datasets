@@ -28,3 +28,13 @@ pip_parse(
 load("@py_deps//:requirements.bzl", "install_deps")
 
 install_deps()
+
+pip_parse(
+    name = "py_deps2",
+    python_interpreter_target = interpreter,
+    requirements_lock = "//infra/python:requirements2_lock.txt",
+)
+
+load("@py_deps2//:requirements.bzl", "install_deps")
+
+install_deps()
